@@ -1,6 +1,6 @@
 .venv
-.parquet
-.csv
+*.parquet
+*.csv
 
 # teraform gitignore
 
