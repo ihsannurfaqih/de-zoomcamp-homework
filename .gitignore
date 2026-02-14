@@ -1,6 +1,7 @@
 .venv
 *.parquet
 *.csv
+*.log
 
 # teraform gitignore
 
