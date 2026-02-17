@@ -85,3 +85,22 @@ sources:
             description: Improvement surcharge
           - name: total_amount
             description: Total amount charged
+
+      - name: fhv_tripdata
+        description: Raw fore hire vehicle taxi trip records
+        loaded_at_field: lpep_pickup_datetime
+        columns:
+          - name: dispatching_base_num
+            description: "Unique identifier for the base from which the trip originated"
+          - name: pickup_datetime
+            description: Date and time when the meter was engaged
+          - name: dropoff_datetime
+            description: Date and time when the meter was disengaged
+          - name: pulocationid
+            description: TLC Taxi Zone where the meter was engaged
+          - name: dolocationid
+            description: TLC Taxi Zone where the meter was disengaged
+          - name: sr_flag
+            description: Shared ride flag (Y/N)
+          - name: affiliated_base_num
+            description: "Unique identifier for the base affiliated with the trip (if any)"
