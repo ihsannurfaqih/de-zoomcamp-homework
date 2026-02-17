@@ -53,10 +53,46 @@ cleaned_and_enriched as (
         on coalesce(u.payment_type, 0) = pt.payment_type
 )
 
-select * from cleaned_and_enriched
+, deduplicated as (
+    select 
+        *
+        , row_number() over(
+            partition by vendor_id, pickup_datetime, pickup_location_id, service_type
+            order by dropoff_datetime
+        ) as rn 
+    from cleaned_and_enriched
+)
+
+select
+    trip_id,
+    vendor_id,
+    service_type,
+    rate_code_id,
+    pickup_location_id,
+    dropoff_location_id,
+    pickup_datetime,
+    dropoff_datetime,
+    store_and_fwd_flag,
+    passenger_count,
+    trip_distance,
+    trip_type,
+    fare_amount,
+    extra,
+    mta_tax,
+    tip_amount,
+    tolls_amount,
+    ehail_fee,
+    improvement_surcharge,
+    total_amount,
+    payment_type,
+    payment_type_description
+from deduplicated
+WHERE TRUE
+    AND rn = 1 -- Keep only the first record for duplicates
+
 
 -- Deduplicate: if multiple trips match (same vendor, second, location, service), keep first
-qualify row_number() over(
-    partition by vendor_id, pickup_datetime, pickup_location_id, service_type
-    order by dropoff_datetime
-) = 1
+-- qualify row_number() over(
+--     partition by vendor_id, pickup_datetime, pickup_location_id, service_type
+--     order by dropoff_datetime
+-- ) = 1

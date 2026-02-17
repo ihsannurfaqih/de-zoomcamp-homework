@@ -97,37 +97,37 @@ models:
         data_type: integer
       - name: trip_distance
         description: Trip distance in miles
-        data_type: numeric
+        data_type: numeric(14,2)
       - name: trip_type
         description: Trip type (1=Street-hail, 2=Dispatch)
         data_type: integer
       - name: trip_duration_minutes
         description: Trip duration in minutes (calculated using cross-database macro)
-        data_type: bigint
+        data_type: numeric(14,2)
       - name: fare_amount
         description: Time and distance fare
-        data_type: numeric
+        data_type: numeric(14,2)
       - name: extra
         description: Miscellaneous extras and surcharges
-        data_type: numeric
+        data_type: numeric(14,2)
       - name: mta_tax
         description: MTA tax
-        data_type: numeric
+        data_type: numeric(14,2)
       - name: tip_amount
         description: Tip amount (credit card only)
-        data_type: numeric
+        data_type: numeric(14,2)
       - name: tolls_amount
         description: Total tolls paid
-        data_type: numeric
+        data_type: numeric(14,2)
       - name: ehail_fee
         description: E-hail service fee
-        data_type: numeric
+        data_type: numeric(14,2)
       - name: improvement_surcharge
         description: Improvement surcharge
-        data_type: numeric
+        data_type: numeric(14,2)
       - name: total_amount
         description: Total amount charged
-        data_type: numeric
+        data_type: numeric(14,2)
         data_tests:
           - not_null
       - name: payment_type

@@ -34,7 +34,7 @@ select
     trips.passenger_count,
     trips.trip_distance,
     trips.trip_type,
-    {{ get_trip_duration_minutes('trips.pickup_datetime', 'trips.dropoff_datetime') }} as trip_duration_minutes,
+    cast((DATE_PART('epoch', (trips.dropoff_datetime - trips.pickup_datetime)) / 60) as numeric(14,2)) AS trip_duration_minutes,
 
     -- Payment breakdown
     trips.fare_amount,

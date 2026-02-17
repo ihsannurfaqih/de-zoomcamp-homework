@@ -1,5 +1,5 @@
 volumes:
-  ny_taxi_postgres_data:
+  taxi_rides_ny_postgres_data:
     driver: local
 
 services:
@@ -8,11 +8,11 @@ services:
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin1234
-      POSTGRES_DB: ny_taxi
+      POSTGRES_DB: taxi_rides_ny
     ports:
       - "5432:5432"
     volumes:
-      - ny_taxi_postgres_data:/var/lib/postgresql
+      - taxi_rides_ny_postgres_data:/var/lib/postgresql
   
   pgadmin:
     image: dpage/pgadmin4
