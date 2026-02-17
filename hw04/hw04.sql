@@ -23,4 +23,6 @@ where true
 	and revenue_month between '2019-10-01' and '2019-10-31';
 
 -- Total records in stg_fhv_tripdata (filter dispatching_base_num IS NULL)
-
+select
+	count(*)
+from taxi_rides_ny.analytics_prod.stg_fhv_tripdata

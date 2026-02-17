@@ -11,7 +11,7 @@ with source as (
         cast(pulocationid as integer) as pickup_location_id,
         cast(dolocationid as integer) as dropoff_location_id,
         cast(sr_flag as varchar) as sr_flag,
-        cast(affiliated_base_num as varchar) as affiliated_base_num
+        cast(affiliated_base_number as varchar) as affiliated_base_number
     from source
 )
 
